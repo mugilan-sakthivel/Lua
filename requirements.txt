@@ -2,5 +2,9 @@ deepagents
 langchain
 langchain-google-genai
 langchain-community
+langchain-postgres
+langchain-text-splitters
 tavily-python
 python-dotenv
+psycopg2-binary
+pgvector
