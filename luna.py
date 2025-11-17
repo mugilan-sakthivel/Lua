@@ -1,5 +1,5 @@
     #!/usr/bin/env python
-"""Luna - AI Research Assistant Entry Point.
+"""Luna - AI Website builder Assistant Entry Point.
 
 This is the main entry point for the Luna research assistant.
 Use this to run the application with various commands.
