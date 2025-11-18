@@ -125,10 +125,8 @@ async def search_website_sections(
         Dictionary with search results
     """
     try:
-        # Create search query document
-        search_document = f"""Section Type: {section_type}
-Theme: 
-Description: {description}"""
+        # Create search query document (focus on description since we filter by section_type)
+        search_document = description
         
         # Generate embeddings for search query
         search_vector = embeddings.embed_query(search_document)
@@ -148,16 +146,16 @@ Description: {description}"""
                 code, description, font_url, document,
                 (document_vectors <=> $1::vector) as similarity_distance
             FROM website_sections 
-            WHERE section_type ILIKE $2
+            WHERE section_type = $2
             ORDER BY document_vectors <=> $1::vector
             LIMIT $3
             """
             
-            # Execute similarity search
+            # Execute similarity search - filter by exact section_type match
             results = await prisma.query_raw(
                 query,
                 vector_str,
-                f"%{section_type}%",
+                section_type,  # Exact match instead of ILIKE
                 top_k
             )
             
