@@ -1,7 +1,7 @@
-"""Component search tool with RAG-based retrieval from Supabase."""
+"""Component search tool with RAG-based retrieval from website sections."""
 
 from typing import List, Dict
-from src.tools.component_database import search_components
+from src.utils.db_manager import search_sections_sync
 
 
 def search_components_rag(
@@ -23,9 +23,9 @@ def search_components_rag(
     Returns:
         Dictionary with search results including code, colors, and fonts
     """
-    return search_components(
-        component_type=component_type,
-        component_specification=component_specification,
+    return search_sections_sync(
+        section_type=component_type,
+        description=component_specification,
         top_k=top_k
     )
 
@@ -37,18 +37,13 @@ component_search_tool = {
     "parameters": {
         "type": "object",
         "properties": {
-            "component_type": {
+            "section_type": {
                 "type": "string",
                 "description": "Type of component needed (e.g., 'button', 'card', 'pricing', 'navigation', 'testimonial', 'hero', 'form')"
             },
-            "component_specification": {
+            "description": {
                 "type": "string",
-                "description": "Detailed specification of what the component should do and look like"
-            },
-            "features_list": {
-                "type": "array",
-                "items": {"type": "string"},
-                "description": "List of specific features the component must have"
+                "description": "Detailed description of what the component should do and look like"
             },
             "top_k": {
                 "type": "integer",
@@ -56,7 +51,7 @@ component_search_tool = {
                 "default": 3
             }
         },
-        "required": ["component_type", "component_specification"]
+        "required": ["section_type", "description"]
     },
     "function": search_components_rag
 }
