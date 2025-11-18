@@ -1,0 +1,9 @@
+{
+    "section_type": "hero",
+    "website_name": "Modern Portfolio",
+    "website_url": "https://portfolio.example.com",
+    "theme": "minimal",
+    "code": "<div class=\"hero-section bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20\">\n  <div class=\"container mx-auto text-center\">\n    <h1 class=\"text-5xl font-bold mb-6\">John Doe</h1>\n    <p class=\"text-xl mb-8\">Full Stack Developer & UI/UX Designer</p>\n    <button class=\"bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all\">\n      View My Work\n    </button>\n  </div>\n</div>",
+    "description": "A modern hero section with gradient background, centered content, and call-to-action button. Features responsive design with Tailwind CSS.",
+    "font_url": "https://fonts.google.com/specimen/Inter"
+}
